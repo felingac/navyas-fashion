@@ -7,3 +7,4 @@ media/catalog/product/cache/
 RELEASE_NOTES.txt
 var/
 .htaccess
+.idea/
