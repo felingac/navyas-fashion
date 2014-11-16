@@ -42,8 +42,14 @@
                         <a class="fancybox category-gallery" title="<?php echo $_productNameStripped; ?>" href="<?php echo $this->helper('catalog/image')->init($_product, 'small_image'); ?>">&nbsp;</a>
                     <?php endif; // End Fancybox ?>
 					<?php if(Mage::getStoreConfig('ajax/general/enabledpro')){ ?>
-					<button type="button" title="<?php echo $this->__('Quick View') ?>" class="button btn-quick-view" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Quick View') ?></span></span></button>
-					<a href='<?php echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId()));?>' class='ajax-fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Test</a>
+                        <?php if ( ($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped()) ): ?>
+                            <?php if($_product->isSaleable()): ?>
+                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-quick-view" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php endif; ?>
+                        <?php else: ?>
+					        <button type="button" title="<?php echo $this->__('Quick View') ?>" class="button btn-quick-view" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Quick View') ?></span></span></button>
+					        <a href='<?php echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId()));?>' class='ajax-fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Test</a>
+                        <?php endif; ?>
 					<?php } ?>
                 </div>
             </div>
@@ -152,8 +158,15 @@
 							<?php endif;
 						// End Fancybox ?>
 						<?php if(Mage::getStoreConfig('ajax/general/enabledpro')){ ?>
-						<button type="button" title="<?php echo $this->__('Quick View') ?>" class="button btn-quick-view" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Quick View') ?></span></span></button>
-						<a href='<?php echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId()));?>' class='ajax-fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Test</a><?php } ?>
+                            <?php if (($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped()) ): ?>
+                                <?php if($_product->isSaleable()): ?>
+                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <button type="button" title="<?php echo $this->__('Quick View') ?>" class="button btn-quick-view" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Quick View') ?></span></span></button>
+                                <a href='<?php echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId()));?>' class='ajax-fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Test</a>
+                            <?php endif; ?>
+                        <?php } ?>
 					</div>
 					<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
 					<?php echo $this->getPriceHtml($_product, true) ?>
@@ -194,8 +207,16 @@
 								<a class="fancybox category-gallery" title="<?php echo $_productNameStripped; ?>" href="<?php echo $this->helper('catalog/image')->init($_product, 'small_image'); ?>">&nbsp;</a>
 							<?php endif;
 						// End Fancybox ?>
-						<?php if(Mage::getStoreConfig('ajax/general/enabledpro')){ ?><button type="button" title="<?php echo $this->__('Quick View') ?>" class="button btn-quick-view" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Quick View') ?></span></span></button>
-						<a href='<?php echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId()));?>' class='ajax-fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Test</a><?php } ?>
+						<?php if(Mage::getStoreConfig('ajax/general/enabledpro')){ ?>
+                            <?php if (($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped()) ): ?>
+                                <?php if($_product->isSaleable()): ?>
+                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-quick-view" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <button type="button" title="<?php echo $this->__('Quick View') ?>" class="button btn-quick-view" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Quick View') ?></span></span></button>
+                                <a href='<?php echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId()));?>' class='ajax-fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Test</a>
+                            <?php endif; ?>
+                        <?php } ?>
 					</div>
 					<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
 					<?php echo $this->getPriceHtml($_product, true) ?>

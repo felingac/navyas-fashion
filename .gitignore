@@ -8,3 +8,5 @@ RELEASE_NOTES.txt
 var/
 .htaccess
 .idea/
+magmi/
+media/import/

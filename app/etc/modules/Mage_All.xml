@@ -241,7 +241,7 @@
             </depends>
         </Mage_Backup>
         <Mage_Poll>
-            <active>true</active>
+            <active>false</active>
             <codePool>core</codePool>
             <depends>
                 <Mage_Core/>
@@ -265,7 +265,7 @@
             </depends>
         </Mage_Review>
         <Mage_Tag>
-            <active>true</active>
+            <active>false</active>
             <codePool>core</codePool>
             <depends>
                 <Mage_Catalog/>
