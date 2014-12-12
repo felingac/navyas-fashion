@@ -18,7 +18,7 @@
 	$_menu = $this->getHtml('level-top');
 	$routeName = Mage::app()->getRequest()->getRouteName();  
 	$identifier = Mage::getSingleton('cms/page')->getIdentifier();
-	
+
 	$navigation = MAGE::helper('ThemeOptions')->getThemeOptions('menu');
 	$statt = MAGE::helper('ThemeOptions/Menu')->getMenuStaticBlocks();
 ?>
@@ -29,6 +29,7 @@
         <?php 
 	        echo $_menu;
 	        echo $statt; ?>
+        <li class="level-top <?php if($routeName == 'inquiry'): echo 'active'; endif; ?>"><a class="level-top" href="<?php echo $this->getUrl('inquiry') ?>"><span><?php echo $this->__('Wholesale deals') ?></span></a></li>
     </ul>
 </nav>
 <?php endif ?>

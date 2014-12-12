@@ -1,4 +1,7 @@
-<?php $testimonials = $this->getTestimonials(); ?>
+<?php $testimonials = $this->getTestimonials();
+$_width = Mage::helper('testimonials')->getImageWidth();
+$_height = Mage::helper('testimonials')->getImageHeight();
+?>
 <div id="testimonialsList" class="block block-testimonials <?php if (!$this->getShowBlockDesign()): ?>empty-design<?php endif ?>">
     <div class="block-title">
         <strong><span><?php echo $this->__('Testimonials') ?></span></strong>
@@ -14,7 +17,17 @@
                             <div class="rating-title"><?php echo $this->__('Rating: ') ?></div>
                             <div class="rating-box"><div class="rating" style="width: <?php echo $testimonial->getRating() / 5 * 100 ?>%;"></div></div>
                         <?php endif ?>
-                        <div class="message"><?php echo $testimonial->getMessage(); ?></div>
+
+                        <div class="message">
+                            <?php if ($image = $this->getImagePath($testimonial)): ?>
+                                <div class="testimonial-image footer-testimonial-image" style="width: <?php echo ($_width + 10) ?>px">
+                                    <img src="<?php echo $this->helper('testimonials/image')->
+                                        init($image)->resize($_width, $_height); ?>"
+                                         alt="Profile image" />
+                                </div>
+                            <?php endif ?>
+                            <p class="footer-testimonial-message"><?php echo $testimonial->getMessage(); ?></p>
+                        </div>
                     </div>
                     <div class="name"><?php echo $testimonial->getName(); ?></div>
                     <a class="read-more" href="#"><?php echo $this->__('Read more') ?></a>

@@ -62,6 +62,18 @@
 							<?php echo $item['lastname'];?>
 						</td>
 					</tr>
+                    <tr class="even pointer">
+						<td class=""width="15%">Product For Enquiry</td>
+						<td class="a-left ">
+							<?php echo $item['productname'];?>
+						</td>
+					</tr>
+                    <tr class="even pointer">
+						<td class=""width="15%">SKU</td>
+						<td class="a-left ">
+							<?php echo $item['sku'];?>
+						</td>
+					</tr>
 					<tr class="even pointer">
 						<td class=""width="15%">Company Name</td>
 						<td class="a-left ">
@@ -104,6 +116,10 @@
 						<td class=""width="15%">Email</td>
 						<td class="a-left "><?php echo $item['email'];?></td>
 					</tr>
+                    <tr class="even pointer">
+                        <td class=""width="15%">Interested in</td>
+                        <td class="a-left "><?php echo $item['categories'];?></td>
+                    </tr>
 					<tr class="even pointer">
 						<td class=""width="15%">Website</td>
 						<td class="a-left "><?php if($item['website']==""): echo "-";else:echo $item['website'];endif; ?></td>

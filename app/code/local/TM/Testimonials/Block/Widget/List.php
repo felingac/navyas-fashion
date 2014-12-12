@@ -4,6 +4,7 @@ class TM_Testimonials_Block_Widget_List extends Mage_Core_Block_Template
     implements Mage_Widget_Block_Interface
 {
 
+    protected $_placeholderImage;
     /**
      * Initialize block's cache
      */
@@ -55,6 +56,7 @@ class TM_Testimonials_Block_Widget_List extends Mage_Core_Block_Template
                     ->limit(Mage::helper('testimonials')->getItemsNumInWidget());
 
         $this->setTestimonials($testimonials);
+        $this->_placeholderImage = Mage::helper('testimonials')->getPlaceholderImage();
         return parent::_beforeToHtml();
     }
 
@@ -69,5 +71,14 @@ class TM_Testimonials_Block_Widget_List extends Mage_Core_Block_Template
     public function getShowBlockDesign()
     {
         return (bool) $this->_getData('show_block_design');
+    }
+
+    public function getImagePath($testimonial)
+    {
+        $image = $testimonial->getImage();
+        if (!$image && $this->_placeholderImage) {
+            $image = $this->_placeholderImage;
+        }
+        return $image;
     }
 }

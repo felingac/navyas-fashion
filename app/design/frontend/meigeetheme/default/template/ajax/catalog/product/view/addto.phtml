@@ -1,6 +1,12 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-
+<div class="add-to-box">
+    <?php if($_product->isSaleable()): ?>
+        <div class="add-to-cart">
+            <button type="button" title="<?php echo $this->__('Enquiry') ?>" class="button btn-cart" onclick="window.location.href='<?php echo $this->getUrl('inquiry')?>'"><span><span><?php echo $this->__('Enquiry') ?></span></span></button>
+        </div>
+    <?php endif; ?>
+</div>
 <ul class="add-to-links">
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
     <li><a href="#" onclick="wishlistForm.submitAjaxWishlist(this, '<?php echo $_wishlistSubmitUrl ?>','<?php echo $_product->getId()?>'); return false;" class="link-wishlist"><span>&nbsp;</span><?php echo $this->__('Add to Wishlist') ?></a></li>

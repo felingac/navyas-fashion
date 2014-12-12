@@ -38,6 +38,15 @@
 
  ?>
 
+<?php
+
+// to get all parent category on the form
+$categories = Mage::getModel('catalog/category')->getCollection()
+    ->addAttributeToSelect('*')//or you can just add some attributes
+    ->addAttributeToFilter('level', 2)//2 is actually the first level
+    ->addAttributeToFilter('is_active', 1);//if you want only active categories
+?>
+
 <?php if($captcha_hide): ?>
 <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS).'inquiry/jquery.min.js'?>">
 </script>
@@ -220,6 +229,23 @@ jq("#img_refresh").click(function(){
                         </div>
                     </div>
                 </li>
+
+                <li class="fields">
+                    <div class="field">
+                        <label class="checkbox-li"><?php echo "Interested In:"; ?><span class="required"><em>*</em></span></label>
+                            <?php foreach($categories as $parentCategories)
+                            {
+                                if($parentCategories->getName() != 'Popular Products'){
+                                ?>
+                                <div class="input-checkbox">
+                                        <input type="checkbox" class="checkbox" name="categories[]" value="<?php echo $parentCategories->getName(); ?>"><?php echo $parentCategories->getName().'&nbsp;'; ?>
+                                </div>
+                            <?php }
+                            }
+                            ?>
+                    </div>
+                </li>
+
                 <li class="fields">
                     <?php if($website_hide): ?>
                     <div class="field">

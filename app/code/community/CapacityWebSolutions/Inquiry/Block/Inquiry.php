@@ -18,6 +18,13 @@ class CapacityWebSolutions_Inquiry_Block_Inquiry extends Mage_Core_Block_Templat
 			$collection->setOrder('createddt',"Asc")->load(); 
 		return $collection;
 	}
+
+    public function getProductInfo()
+	{
+        $productId =  Mage::registry ('productId');
+		if($collection = Mage::getModel('catalog/product')->load($productId))
+		    return $collection;
+	}
 	
 	public function getAllDealer($delId)
 	{

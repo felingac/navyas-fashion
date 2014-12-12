@@ -35,6 +35,10 @@
 					echo '</div>';
 				endif; 
 			?>
+            <?php // Predefined Static Block
+            if ($freeshipping = $this->getLayout()->createBlock('cms/block')->setBlockId('free-shipping')->toHtml()):
+                echo $freeshipping;
+            endif; ?>
 			<?php // Predefined Static Block
 			if ($static_html = $this->getChildHtml('social_links')):
 				echo $static_html;
@@ -44,9 +48,9 @@
 		</div>
 		<div class="header-main-block">
 			<?php if ($customlogo['logo_status'] == 0): ?>
-				<h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" <?php echo MAGE::helper('ThemeOptions/Retina')->getRetinaData('logo'); ?> alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+				<h2 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" <?php echo MAGE::helper('ThemeOptions/Retina')->getRetinaData('logo'); ?> alt="<?php echo $this->getLogoAlt() ?>" /></a></h2>
 				<?php else:?>
-				<h1 class="logo"><strong><?php echo $customlogo['logo_alt']; ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $customlogo['logo_alt']; ?>" class="logo"><img src="<?php echo $mediaurl.$customlogo['logo']; ?>" <?php echo MAGE::helper('ThemeOptions/Retina')->getRetinaData('logo_custom'); ?> alt="<?php echo $customlogo['logo_alt']; ?>" /></a></h1>
+				<h2 class="logo"><strong><?php echo $customlogo['logo_alt']; ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $customlogo['logo_alt']; ?>" class="logo"><img src="<?php echo $mediaurl.$customlogo['logo']; ?>" <?php echo MAGE::helper('ThemeOptions/Retina')->getRetinaData('logo_custom'); ?> alt="<?php echo $customlogo['logo_alt']; ?>" /></a></h2>
 			<?php endif; ?>
 			<?php echo $this->getChildHtml('cart_sidebar') ?>
 			<?php // Predefined Static Block

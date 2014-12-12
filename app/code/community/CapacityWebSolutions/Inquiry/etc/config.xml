@@ -60,7 +60,7 @@
 				<use>admin</use>
 				<args>
 					<module>CapacityWebSolutions_Inquiry</module>
-					<frontName>inquiry</frontName>
+					<frontName>wholesale-deal</frontName>
 				</args>
 			</inquiry>
         </routers>

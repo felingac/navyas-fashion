@@ -19,7 +19,7 @@ implements Mage_Widget_Block_Interface
     protected function catId()
     {
         $cat = explode("/", $this->getData('featured_category'));     
-        return $cat[0];
+        return $cat[1];
     }
     public function catName () {
         return Mage::getModel('catalog/category')->load($this->catId());
@@ -36,9 +36,6 @@ implements Mage_Widget_Block_Interface
     public function getMyCollection () {
 		$this->products = Mage::getResourceModel('catalog/product_collection')
 			->addAttributeToSelect(array('name', 'price', 'small_image', 'short_description'), 'inner')
-			->addAttributeToSelect('news_from_date')
-			->addAttributeToSelect('news_to_date')
-			->addAttributeToSelect('special_price')
 			->addAttributeToSelect('status')
 			->addAttributeToFilter('visibility', array(2, 3, 4))
 			->addAttributeToSelect('*')
